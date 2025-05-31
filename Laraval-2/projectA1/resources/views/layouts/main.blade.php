@@ -18,6 +18,15 @@
             <a href="/" class="navbar-brand fw-bolder">Self</a>
         </div>
     </nav>
+<<<<<<< HEAD
+=======
+    @if ($message=Session::get('success'))
+        <div class="alert alert-success alert-dismissible fade show">
+            <strong>success</strong>{{$message}}
+            <button class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+    @endif
+>>>>>>> d4bd095f43536d152b8a185015db733a0f8db7b2
     @yield('maincontents')
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 

@@ -53,14 +53,22 @@
             <label for="" class="form-label fw-semibold">Choose Your Image</label>
             <input type="file" name="file" id="file" class="form-control  @if($errors->has('name')) {{'is-invalid'}} @endif" value="{{old('file')}}">
             @if ($errors->has('file'))
+<<<<<<< HEAD
             <div class="invalid-feedback">{{$errors->first('file')}}</div>
+=======
+            <div class="invalid-feedback">{{$errors->first('file    ')}}</div>
+>>>>>>> d4bd095f43536d152b8a185015db733a0f8db7b2
         @endif
         </div>
     </div>
     <!-- Row -->
     <div class="button mt-3">
         <button class="btn btn-primary btn-sm" nane="save" id="save">Save</button>
+<<<<<<< HEAD
         <button class="btn btn-danger btn-sm" name="clear" id="clear">Clear</button>
+=======
+        <input class="btn btn-danger btn-sm" type="reset" name="clear" id="clear" value="clear">    
+>>>>>>> d4bd095f43536d152b8a185015db733a0f8db7b2
     </div>
 </form>
 </div>

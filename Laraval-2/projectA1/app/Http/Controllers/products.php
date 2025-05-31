@@ -10,8 +10,14 @@ class products extends Controller
     //main page
     public function index()
     {
+<<<<<<< HEAD
         // $producted = product::get();
         return view("templates.home");
+=======
+        //dispale the data in home page
+        $displaydata = product::latest()->paginate(5);
+        return view("templates.home", ['displaydata' => $displaydata]);
+>>>>>>> d4bd095f43536d152b8a185015db733a0f8db7b2
     }
 
     public function input()
@@ -40,8 +46,54 @@ class products extends Controller
         $Product->mrp = $request->mrp;
         $Product->price = $request->price;
         $Product->save();
+<<<<<<< HEAD
         return back();
 
     }
 
+=======
+        return back()->withSuccess('Product successsfully Stored...');
+
+    }
+    public function show($id)
+    {
+        $Product = Product::where('id', operator: $id)->first();
+        return view('templates.show', ['Product' => $Product]);
+    }
+    public function edit($id)
+    {
+        $Product = Product::where('id', $id)->first(); //select the product
+        return view('templates.edit', ['Product' => $Product]);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'name' => 'required',
+            'textarea' => 'required',
+            'mrp' => 'required|numeric',
+            'price' => 'required|numeric',
+            'file' => 'nullable|mimes:jpeg,jpg,png,gif|max:10000',
+        ]);
+        $Product = Product::where('id', $id)->first();
+        if (isset($request->file)) {
+            $imagename = time() . "." . $request->file->extension();
+            $request->file->move(public_path('brandimages'), $imagename);
+            $Product->file = $imagename;
+        }
+        $Product->name = $request->name;
+        $Product->textarea = $request->textarea;
+        $Product->mrp = $request->mrp;
+        $Product->price = $request->price;
+        $Product->save();
+        return back()->withSuccess('Product successsfully Updated...');
+    }
+
+    public function destroy($id)
+    {
+        $Product = Product::where('id', $id)->first();
+        $Product->delete();
+        return back()->withSuccess('Product successsfully deleted...');
+    }
+>>>>>>> d4bd095f43536d152b8a185015db733a0f8db7b2
 }
